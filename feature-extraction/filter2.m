@@ -1,0 +1,23 @@
+row=0;
+delta=zeros(40960,768);
+theta=zeros(40960,768);
+lowalpha=zeros(40960,768);
+highalpha=zeros(40960,768);
+alpha=zeros(40960,768);
+lowbeta=zeros(40960,768);
+midbeta=zeros(40960,768);
+highbeta=zeros(40960,768);
+beta=zeros(40960,768);
+gamma=zeros(40960,768);
+for i=1:40960
+    row=row+1;
+    theta(row,:)=bandpass(PLV_new1(i,:),[4 7],128);
+    lowalpha(row,:)=bandpass(PLV_new1(i,:),[8 9.5],128);
+    highalpha(row,:)=bandpass(PLV_new1(i,:),[10.5 12],128);
+    alpha(row,:)=bandpass(PLV_new1(i,:),[8 12],128);
+    lowbeta(row,:)=bandpass(PLV_new1(i,:),[13 16],128);
+    midbeta(row,:)=bandpass(PLV_new1(i,:),[17 20],128);
+    highbeta(row,:)=bandpass(PLV_new1(i,:),[21 29],128);
+    beta(row,:)=bandpass(PLV_new1(i,:),[13 29],128);
+    gamma(row,:)=bandpass(PLV_new1(i,:),[30 50],128);
+end
